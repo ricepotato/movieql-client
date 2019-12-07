@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-const HOME_PAGE = gql`
+export const HOME_PAGE = gql`
   {
     movies(limit:5, rating:7){
       id
@@ -9,6 +9,22 @@ const HOME_PAGE = gql`
       rating
     }
   }
-`
+`;
 
-export default HOME_PAGE;
+export const MOVIE_DETAILS = gql`
+  query getMovieDetails($movieId: Int!){
+      movie(id: $movieId){
+          title
+          rating
+          description_intro
+          medium_cover_image
+          language
+          genres
+      }
+      suggestions(id: $movieId){
+        medium_cover_image
+        title
+        rating
+      }
+  }
+`;
